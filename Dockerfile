@@ -6,7 +6,8 @@ WORKDIR /app
 ENV BROWSER=firefox
 ENV DEBUG=pw:browser
 
-RUN chown -R pwuser /app
-USER pwuser
+RUN adduser jenkins --disabled-password
+RUN chown -R jenkins /app
+USER jenkins
 
 ENTRYPOINT dotnet test --logger:"console;verbosity=detailed"
